@@ -14,4 +14,22 @@
 #define QT_QTPROPERTYBROWSER_EXPORT
 #endif
 
+#ifndef Q_DISABLE_COPY
+#define Q_DISABLE_COPY(Class) \
+    Class(const Class &) = delete;\
+    Class &operator=(const Class &) = delete;
+#endif
+
+#ifndef Q_DISABLE_MOVE
+#define Q_DISABLE_MOVE(Class) \
+    Class(Class &&) = delete; \
+    Class &operator=(Class &&) = delete;
+#endif
+
+#ifndef Q_DISABLE_COPY_MOVE
+#define Q_DISABLE_COPY_MOVE(Class) \
+    Q_DISABLE_COPY(Class) \
+    Q_DISABLE_MOVE(Class)
+#endif
+
 #endif  // SARIBBONGLOBAL_H
